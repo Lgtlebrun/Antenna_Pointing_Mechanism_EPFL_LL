@@ -63,7 +63,7 @@ class StdoutRedirector(io.StringIO):
 
 class MotionThread(QThread):
 
-    """Thread that parallelizes the execution of long-durationed motion tasks"""
+    """Thread that parallelizes the execution of long-duration motion tasks"""
 
     endMotion = Signal(str, str)
 

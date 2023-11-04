@@ -39,108 +39,24 @@ class Ui_Widget(object):
         self.tab_home.setObjectName(u"tab_home")
         self.verticalLayout_3 = QVBoxLayout(self.tab_home)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.graphicsView = QGraphicsView(self.tab_home)
-        self.graphicsView.setObjectName(u"graphicsView")
-        self.graphicsView.setMinimumSize(QSize(400, 300))
-
-        self.horizontalLayout_2.addWidget(self.graphicsView)
-
-        self.line_5 = QFrame(self.tab_home)
-        self.line_5.setObjectName(u"line_5")
-        self.line_5.setFrameShape(QFrame.VLine)
-        self.line_5.setFrameShadow(QFrame.Sunken)
-
-        self.horizontalLayout_2.addWidget(self.line_5)
-
-        self.gridLayout = QGridLayout()
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.label_4 = QLabel(self.tab_home)
-        self.label_4.setObjectName(u"label_4")
-
-        self.gridLayout.addWidget(self.label_4, 1, 0, 1, 1)
-
-        self.DecLabel = QLabel(self.tab_home)
-        self.DecLabel.setObjectName(u"DecLabel")
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        self.label_CurrentPosition_3 = QLabel(self.tab_home)
+        self.label_CurrentPosition_3.setObjectName(u"label_CurrentPosition_3")
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.DecLabel.sizePolicy().hasHeightForWidth())
-        self.DecLabel.setSizePolicy(sizePolicy)
-        self.DecLabel.setMinimumSize(QSize(40, 0))
-        self.DecLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        sizePolicy.setHeightForWidth(self.label_CurrentPosition_3.sizePolicy().hasHeightForWidth())
+        self.label_CurrentPosition_3.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.DecLabel, 1, 2, 1, 1)
-
-        self.RaLabel = QLabel(self.tab_home)
-        self.RaLabel.setObjectName(u"RaLabel")
-        sizePolicy.setHeightForWidth(self.RaLabel.sizePolicy().hasHeightForWidth())
-        self.RaLabel.setSizePolicy(sizePolicy)
-        self.RaLabel.setMinimumSize(QSize(40, 0))
-        self.RaLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.RaLabel, 1, 1, 1, 1)
-
-        self.label_2 = QLabel(self.tab_home)
-        self.label_2.setObjectName(u"label_2")
-
-        self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
-
-        self.label_6 = QLabel(self.tab_home)
-        self.label_6.setObjectName(u"label_6")
-
-        self.gridLayout.addWidget(self.label_6, 2, 0, 1, 1)
-
-        self.AltLabel = QLabel(self.tab_home)
-        self.AltLabel.setObjectName(u"AltLabel")
-        sizePolicy.setHeightForWidth(self.AltLabel.sizePolicy().hasHeightForWidth())
-        self.AltLabel.setSizePolicy(sizePolicy)
-        self.AltLabel.setMinimumSize(QSize(40, 0))
-        self.AltLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.AltLabel, 0, 1, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout.addItem(self.verticalSpacer, 3, 1, 1, 1)
-
-        self.label_GalB = QLabel(self.tab_home)
-        self.label_GalB.setObjectName(u"label_GalB")
-        sizePolicy.setHeightForWidth(self.label_GalB.sizePolicy().hasHeightForWidth())
-        self.label_GalB.setSizePolicy(sizePolicy)
-        self.label_GalB.setMinimumSize(QSize(40, 0))
-        self.label_GalB.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.label_GalB, 2, 2, 1, 1)
-
-        self.label_GalL = QLabel(self.tab_home)
-        self.label_GalL.setObjectName(u"label_GalL")
-        sizePolicy.setHeightForWidth(self.label_GalL.sizePolicy().hasHeightForWidth())
-        self.label_GalL.setSizePolicy(sizePolicy)
-        self.label_GalL.setMinimumSize(QSize(40, 0))
-        self.label_GalL.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.label_GalL, 2, 1, 1, 1)
-
-        self.AzLabel = QLabel(self.tab_home)
-        self.AzLabel.setObjectName(u"AzLabel")
-        sizePolicy.setHeightForWidth(self.AzLabel.sizePolicy().hasHeightForWidth())
-        self.AzLabel.setSizePolicy(sizePolicy)
-        self.AzLabel.setMinimumSize(QSize(40, 0))
-        self.AzLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.AzLabel, 0, 2, 1, 1)
-
-
-        self.horizontalLayout_2.addLayout(self.gridLayout)
-
-
-        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_3.addWidget(self.label_CurrentPosition_3, 0, Qt.AlignHCenter)
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(-1, 0, -1, -1)
+        self.pushButton_openCamera = QPushButton(self.tab_home)
+        self.pushButton_openCamera.setObjectName(u"pushButton_openCamera")
+
+        self.horizontalLayout_5.addWidget(self.pushButton_openCamera)
+
         self.pushButton_goHome = QPushButton(self.tab_home)
         self.pushButton_goHome.setObjectName(u"pushButton_goHome")
 
@@ -159,6 +75,102 @@ class Ui_Widget(object):
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_5)
 
+        self.line_8 = QFrame(self.tab_home)
+        self.line_8.setObjectName(u"line_8")
+        self.line_8.setFrameShape(QFrame.HLine)
+        self.line_8.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_3.addWidget(self.line_8)
+
+        self.label_CurrentPosition = QLabel(self.tab_home)
+        self.label_CurrentPosition.setObjectName(u"label_CurrentPosition")
+        sizePolicy.setHeightForWidth(self.label_CurrentPosition.sizePolicy().hasHeightForWidth())
+        self.label_CurrentPosition.setSizePolicy(sizePolicy)
+
+        self.verticalLayout_3.addWidget(self.label_CurrentPosition, 0, Qt.AlignHCenter)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.gridLayout = QGridLayout()
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.DecLabel = QLabel(self.tab_home)
+        self.DecLabel.setObjectName(u"DecLabel")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.DecLabel.sizePolicy().hasHeightForWidth())
+        self.DecLabel.setSizePolicy(sizePolicy1)
+        self.DecLabel.setMinimumSize(QSize(40, 0))
+        self.DecLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.DecLabel, 1, 2, 1, 1)
+
+        self.AzLabel = QLabel(self.tab_home)
+        self.AzLabel.setObjectName(u"AzLabel")
+        sizePolicy1.setHeightForWidth(self.AzLabel.sizePolicy().hasHeightForWidth())
+        self.AzLabel.setSizePolicy(sizePolicy1)
+        self.AzLabel.setMinimumSize(QSize(40, 0))
+        self.AzLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.AzLabel, 0, 2, 1, 1)
+
+        self.label_GalB = QLabel(self.tab_home)
+        self.label_GalB.setObjectName(u"label_GalB")
+        sizePolicy1.setHeightForWidth(self.label_GalB.sizePolicy().hasHeightForWidth())
+        self.label_GalB.setSizePolicy(sizePolicy1)
+        self.label_GalB.setMinimumSize(QSize(40, 0))
+        self.label_GalB.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.label_GalB, 2, 2, 1, 1)
+
+        self.label_2 = QLabel(self.tab_home)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
+
+        self.RaLabel = QLabel(self.tab_home)
+        self.RaLabel.setObjectName(u"RaLabel")
+        sizePolicy1.setHeightForWidth(self.RaLabel.sizePolicy().hasHeightForWidth())
+        self.RaLabel.setSizePolicy(sizePolicy1)
+        self.RaLabel.setMinimumSize(QSize(40, 0))
+        self.RaLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.RaLabel, 1, 1, 1, 1)
+
+        self.label_4 = QLabel(self.tab_home)
+        self.label_4.setObjectName(u"label_4")
+
+        self.gridLayout.addWidget(self.label_4, 1, 0, 1, 1)
+
+        self.label_GalL = QLabel(self.tab_home)
+        self.label_GalL.setObjectName(u"label_GalL")
+        sizePolicy1.setHeightForWidth(self.label_GalL.sizePolicy().hasHeightForWidth())
+        self.label_GalL.setSizePolicy(sizePolicy1)
+        self.label_GalL.setMinimumSize(QSize(40, 0))
+        self.label_GalL.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.label_GalL, 2, 1, 1, 1)
+
+        self.AltLabel = QLabel(self.tab_home)
+        self.AltLabel.setObjectName(u"AltLabel")
+        sizePolicy1.setHeightForWidth(self.AltLabel.sizePolicy().hasHeightForWidth())
+        self.AltLabel.setSizePolicy(sizePolicy1)
+        self.AltLabel.setMinimumSize(QSize(40, 0))
+        self.AltLabel.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.AltLabel, 0, 1, 1, 1)
+
+        self.label_6 = QLabel(self.tab_home)
+        self.label_6.setObjectName(u"label_6")
+
+        self.gridLayout.addWidget(self.label_6, 2, 0, 1, 1)
+
+
+        self.horizontalLayout_2.addLayout(self.gridLayout)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+
         self.line_3 = QFrame(self.tab_home)
         self.line_3.setObjectName(u"line_3")
         self.line_3.setFrameShape(QFrame.HLine)
@@ -166,80 +178,273 @@ class Ui_Widget(object):
 
         self.verticalLayout_3.addWidget(self.line_3)
 
-        self.horizontalLayout_6 = QHBoxLayout()
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(-1, 0, -1, -1)
+        self.label_CurrentPosition_2 = QLabel(self.tab_home)
+        self.label_CurrentPosition_2.setObjectName(u"label_CurrentPosition_2")
+        sizePolicy.setHeightForWidth(self.label_CurrentPosition_2.sizePolicy().hasHeightForWidth())
+        self.label_CurrentPosition_2.setSizePolicy(sizePolicy)
+
+        self.verticalLayout_3.addWidget(self.label_CurrentPosition_2, 0, Qt.AlignHCenter)
+
+        self.verticalLayout_6 = QVBoxLayout()
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, -1, -1)
         self.comboBoxTracking = QComboBox(self.tab_home)
         self.comboBoxTracking.addItem("")
         self.comboBoxTracking.addItem("")
         self.comboBoxTracking.addItem("")
         self.comboBoxTracking.setObjectName(u"comboBoxTracking")
 
-        self.horizontalLayout_6.addWidget(self.comboBoxTracking)
-
-        self.LabelTrackingFirstCoord = QLabel(self.tab_home)
-        self.LabelTrackingFirstCoord.setObjectName(u"LabelTrackingFirstCoord")
-        sizePolicy.setHeightForWidth(self.LabelTrackingFirstCoord.sizePolicy().hasHeightForWidth())
-        self.LabelTrackingFirstCoord.setSizePolicy(sizePolicy)
-        self.LabelTrackingFirstCoord.setMinimumSize(QSize(20, 0))
-
-        self.horizontalLayout_6.addWidget(self.LabelTrackingFirstCoord)
-
-        self.doubleSpinBox_TrackFirstCoord = QDoubleSpinBox(self.tab_home)
-        self.doubleSpinBox_TrackFirstCoord.setObjectName(u"doubleSpinBox_TrackFirstCoord")
-        self.doubleSpinBox_TrackFirstCoord.setDecimals(3)
-        self.doubleSpinBox_TrackFirstCoord.setMinimum(-1000.000000000000000)
-        self.doubleSpinBox_TrackFirstCoord.setMaximum(1000.000000000000000)
-
-        self.horizontalLayout_6.addWidget(self.doubleSpinBox_TrackFirstCoord)
-
-        self.LabelTrackingSecondCoord = QLabel(self.tab_home)
-        self.LabelTrackingSecondCoord.setObjectName(u"LabelTrackingSecondCoord")
-        sizePolicy.setHeightForWidth(self.LabelTrackingSecondCoord.sizePolicy().hasHeightForWidth())
-        self.LabelTrackingSecondCoord.setSizePolicy(sizePolicy)
-        self.LabelTrackingSecondCoord.setMinimumSize(QSize(30, 0))
-
-        self.horizontalLayout_6.addWidget(self.LabelTrackingSecondCoord)
-
-        self.doubleSpinBox_TrackSecondCoord = QDoubleSpinBox(self.tab_home)
-        self.doubleSpinBox_TrackSecondCoord.setObjectName(u"doubleSpinBox_TrackSecondCoord")
-        self.doubleSpinBox_TrackSecondCoord.setDecimals(3)
-        self.doubleSpinBox_TrackSecondCoord.setMinimum(-1000.000000000000000)
-        self.doubleSpinBox_TrackSecondCoord.setMaximum(1000.000000000000000)
-
-        self.horizontalLayout_6.addWidget(self.doubleSpinBox_TrackSecondCoord)
+        self.horizontalLayout_11.addWidget(self.comboBoxTracking)
 
         self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_6.addItem(self.horizontalSpacer_7)
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_7)
 
-        self.pushButton_GoTo = QPushButton(self.tab_home)
-        self.pushButton_GoTo.setObjectName(u"pushButton_GoTo")
 
-        self.horizontalLayout_6.addWidget(self.pushButton_GoTo)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_11)
 
-        self.checkBox_Tracking = QCheckBox(self.tab_home)
-        self.checkBox_Tracking.setObjectName(u"checkBox_Tracking")
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(-1, 0, -1, -1)
+        self.LabelTrackingFirstCoord = QLabel(self.tab_home)
+        self.LabelTrackingFirstCoord.setObjectName(u"LabelTrackingFirstCoord")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingFirstCoord.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingFirstCoord.setSizePolicy(sizePolicy1)
+        self.LabelTrackingFirstCoord.setMinimumSize(QSize(30, 10))
 
-        self.horizontalLayout_6.addWidget(self.checkBox_Tracking)
+        self.horizontalLayout_6.addWidget(self.LabelTrackingFirstCoord)
+
+        self.doubleSpinBox_TrackFirstCoordDecimal = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackFirstCoordDecimal.setObjectName(u"doubleSpinBox_TrackFirstCoordDecimal")
+        self.doubleSpinBox_TrackFirstCoordDecimal.setMinimumSize(QSize(30, 0))
+        self.doubleSpinBox_TrackFirstCoordDecimal.setDecimals(3)
+        self.doubleSpinBox_TrackFirstCoordDecimal.setMinimum(-1000.000000000000000)
+        self.doubleSpinBox_TrackFirstCoordDecimal.setMaximum(1000.000000000000000)
+
+        self.horizontalLayout_6.addWidget(self.doubleSpinBox_TrackFirstCoordDecimal)
+
+        self.LabelTrackingFirstCoord_2 = QLabel(self.tab_home)
+        self.LabelTrackingFirstCoord_2.setObjectName(u"LabelTrackingFirstCoord_2")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingFirstCoord_2.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingFirstCoord_2.setSizePolicy(sizePolicy1)
+        self.LabelTrackingFirstCoord_2.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_6.addWidget(self.LabelTrackingFirstCoord_2)
+
+        self.line_5 = QFrame(self.tab_home)
+        self.line_5.setObjectName(u"line_5")
+        self.line_5.setFrameShape(QFrame.VLine)
+        self.line_5.setFrameShadow(QFrame.Sunken)
+
+        self.horizontalLayout_6.addWidget(self.line_5)
+
+        self.doubleSpinBox_TrackFirstCoord_h = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackFirstCoord_h.setObjectName(u"doubleSpinBox_TrackFirstCoord_h")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.doubleSpinBox_TrackFirstCoord_h.sizePolicy().hasHeightForWidth())
+        self.doubleSpinBox_TrackFirstCoord_h.setSizePolicy(sizePolicy2)
+        self.doubleSpinBox_TrackFirstCoord_h.setMinimumSize(QSize(30, 0))
+        self.doubleSpinBox_TrackFirstCoord_h.setDecimals(0)
+        self.doubleSpinBox_TrackFirstCoord_h.setMinimum(0.000000000000000)
+        self.doubleSpinBox_TrackFirstCoord_h.setMaximum(23.000000000000000)
+
+        self.horizontalLayout_6.addWidget(self.doubleSpinBox_TrackFirstCoord_h)
+
+        self.LabelTrackingFirstCoord_3 = QLabel(self.tab_home)
+        self.LabelTrackingFirstCoord_3.setObjectName(u"LabelTrackingFirstCoord_3")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingFirstCoord_3.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingFirstCoord_3.setSizePolicy(sizePolicy1)
+        self.LabelTrackingFirstCoord_3.setMinimumSize(QSize(29, 10))
+
+        self.horizontalLayout_6.addWidget(self.LabelTrackingFirstCoord_3)
+
+        self.doubleSpinBox_TrackFirstCoord_m = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackFirstCoord_m.setObjectName(u"doubleSpinBox_TrackFirstCoord_m")
+        sizePolicy2.setHeightForWidth(self.doubleSpinBox_TrackFirstCoord_m.sizePolicy().hasHeightForWidth())
+        self.doubleSpinBox_TrackFirstCoord_m.setSizePolicy(sizePolicy2)
+        self.doubleSpinBox_TrackFirstCoord_m.setMinimumSize(QSize(20, 0))
+        self.doubleSpinBox_TrackFirstCoord_m.setBaseSize(QSize(0, 0))
+        self.doubleSpinBox_TrackFirstCoord_m.setDecimals(0)
+        self.doubleSpinBox_TrackFirstCoord_m.setMinimum(0.000000000000000)
+        self.doubleSpinBox_TrackFirstCoord_m.setMaximum(59.000000000000000)
+        self.doubleSpinBox_TrackFirstCoord_m.setValue(0.000000000000000)
+
+        self.horizontalLayout_6.addWidget(self.doubleSpinBox_TrackFirstCoord_m)
+
+        self.LabelTrackingFirstCoord_4 = QLabel(self.tab_home)
+        self.LabelTrackingFirstCoord_4.setObjectName(u"LabelTrackingFirstCoord_4")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingFirstCoord_4.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingFirstCoord_4.setSizePolicy(sizePolicy1)
+        self.LabelTrackingFirstCoord_4.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_6.addWidget(self.LabelTrackingFirstCoord_4)
+
+        self.doubleSpinBox_TrackFirstCoord_s = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackFirstCoord_s.setObjectName(u"doubleSpinBox_TrackFirstCoord_s")
+        self.doubleSpinBox_TrackFirstCoord_s.setDecimals(1)
+        self.doubleSpinBox_TrackFirstCoord_s.setMinimum(0.000000000000000)
+        self.doubleSpinBox_TrackFirstCoord_s.setMaximum(59.899999999999999)
+
+        self.horizontalLayout_6.addWidget(self.doubleSpinBox_TrackFirstCoord_s)
+
+        self.LabelTrackingFirstCoord_5 = QLabel(self.tab_home)
+        self.LabelTrackingFirstCoord_5.setObjectName(u"LabelTrackingFirstCoord_5")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingFirstCoord_5.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingFirstCoord_5.setSizePolicy(sizePolicy1)
+        self.LabelTrackingFirstCoord_5.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_6.addWidget(self.LabelTrackingFirstCoord_5)
+
+        self.horizontalSpacer_12 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_12)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_6)
+
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(-1, 0, -1, -1)
+        self.LabelTrackingSecondCoord = QLabel(self.tab_home)
+        self.LabelTrackingSecondCoord.setObjectName(u"LabelTrackingSecondCoord")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingSecondCoord.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingSecondCoord.setSizePolicy(sizePolicy1)
+        self.LabelTrackingSecondCoord.setMinimumSize(QSize(30, 10))
+
+        self.horizontalLayout_12.addWidget(self.LabelTrackingSecondCoord)
+
+        self.doubleSpinBox_TrackSecondCoordDecimal = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackSecondCoordDecimal.setObjectName(u"doubleSpinBox_TrackSecondCoordDecimal")
+        self.doubleSpinBox_TrackSecondCoordDecimal.setMinimumSize(QSize(30, 0))
+        self.doubleSpinBox_TrackSecondCoordDecimal.setDecimals(3)
+        self.doubleSpinBox_TrackSecondCoordDecimal.setMinimum(-1000.000000000000000)
+        self.doubleSpinBox_TrackSecondCoordDecimal.setMaximum(1000.000000000000000)
+
+        self.horizontalLayout_12.addWidget(self.doubleSpinBox_TrackSecondCoordDecimal)
+
+        self.LabelTrackingSecondCoord_2 = QLabel(self.tab_home)
+        self.LabelTrackingSecondCoord_2.setObjectName(u"LabelTrackingSecondCoord_2")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingSecondCoord_2.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingSecondCoord_2.setSizePolicy(sizePolicy1)
+        self.LabelTrackingSecondCoord_2.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_12.addWidget(self.LabelTrackingSecondCoord_2)
+
+        self.line_7 = QFrame(self.tab_home)
+        self.line_7.setObjectName(u"line_7")
+        self.line_7.setFrameShape(QFrame.VLine)
+        self.line_7.setFrameShadow(QFrame.Sunken)
+
+        self.horizontalLayout_12.addWidget(self.line_7)
+
+        self.doubleSpinBox_TrackSecondCoord_Deg = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackSecondCoord_Deg.setObjectName(u"doubleSpinBox_TrackSecondCoord_Deg")
+        self.doubleSpinBox_TrackSecondCoord_Deg.setMinimumSize(QSize(30, 0))
+        self.doubleSpinBox_TrackSecondCoord_Deg.setDecimals(0)
+        self.doubleSpinBox_TrackSecondCoord_Deg.setMinimum(-90.000000000000000)
+        self.doubleSpinBox_TrackSecondCoord_Deg.setMaximum(360.000000000000000)
+
+        self.horizontalLayout_12.addWidget(self.doubleSpinBox_TrackSecondCoord_Deg)
+
+        self.LabelTrackingSecondCoord_3 = QLabel(self.tab_home)
+        self.LabelTrackingSecondCoord_3.setObjectName(u"LabelTrackingSecondCoord_3")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingSecondCoord_3.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingSecondCoord_3.setSizePolicy(sizePolicy1)
+        self.LabelTrackingSecondCoord_3.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_12.addWidget(self.LabelTrackingSecondCoord_3)
+
+        self.doubleSpinBox_TrackSecondCoord_m = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackSecondCoord_m.setObjectName(u"doubleSpinBox_TrackSecondCoord_m")
+        self.doubleSpinBox_TrackSecondCoord_m.setMinimumSize(QSize(20, 0))
+        self.doubleSpinBox_TrackSecondCoord_m.setDecimals(0)
+        self.doubleSpinBox_TrackSecondCoord_m.setMinimum(0.000000000000000)
+        self.doubleSpinBox_TrackSecondCoord_m.setMaximum(59.000000000000000)
+
+        self.horizontalLayout_12.addWidget(self.doubleSpinBox_TrackSecondCoord_m)
+
+        self.LabelTrackingSecondCoord_4 = QLabel(self.tab_home)
+        self.LabelTrackingSecondCoord_4.setObjectName(u"LabelTrackingSecondCoord_4")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingSecondCoord_4.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingSecondCoord_4.setSizePolicy(sizePolicy1)
+        self.LabelTrackingSecondCoord_4.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_12.addWidget(self.LabelTrackingSecondCoord_4)
+
+        self.doubleSpinBox_TrackSecondCoord_s = QDoubleSpinBox(self.tab_home)
+        self.doubleSpinBox_TrackSecondCoord_s.setObjectName(u"doubleSpinBox_TrackSecondCoord_s")
+        self.doubleSpinBox_TrackSecondCoord_s.setDecimals(1)
+        self.doubleSpinBox_TrackSecondCoord_s.setMinimum(0.000000000000000)
+        self.doubleSpinBox_TrackSecondCoord_s.setMaximum(59.899999999999999)
+
+        self.horizontalLayout_12.addWidget(self.doubleSpinBox_TrackSecondCoord_s)
+
+        self.LabelTrackingSecondCoord_5 = QLabel(self.tab_home)
+        self.LabelTrackingSecondCoord_5.setObjectName(u"LabelTrackingSecondCoord_5")
+        sizePolicy1.setHeightForWidth(self.LabelTrackingSecondCoord_5.sizePolicy().hasHeightForWidth())
+        self.LabelTrackingSecondCoord_5.setSizePolicy(sizePolicy1)
+        self.LabelTrackingSecondCoord_5.setMinimumSize(QSize(20, 10))
+
+        self.horizontalLayout_12.addWidget(self.LabelTrackingSecondCoord_5)
+
+        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_12.addItem(self.horizontalSpacer_13)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_12)
 
         self.line_2 = QFrame(self.tab_home)
         self.line_2.setObjectName(u"line_2")
         self.line_2.setFrameShape(QFrame.VLine)
         self.line_2.setFrameShadow(QFrame.Sunken)
 
-        self.horizontalLayout_6.addWidget(self.line_2)
+        self.verticalLayout_6.addWidget(self.line_2)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_10)
+
+        self.pushButton_GoTo = QPushButton(self.tab_home)
+        self.pushButton_GoTo.setObjectName(u"pushButton_GoTo")
+        sizePolicy.setHeightForWidth(self.pushButton_GoTo.sizePolicy().hasHeightForWidth())
+        self.pushButton_GoTo.setSizePolicy(sizePolicy)
+        self.pushButton_GoTo.setMinimumSize(QSize(0, 0))
+
+        self.horizontalLayout_10.addWidget(self.pushButton_GoTo)
 
         self.pushButton_StopTracking = QPushButton(self.tab_home)
         self.pushButton_StopTracking.setObjectName(u"pushButton_StopTracking")
         self.pushButton_StopTracking.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.pushButton_StopTracking.sizePolicy().hasHeightForWidth())
+        self.pushButton_StopTracking.setSizePolicy(sizePolicy)
         self.pushButton_StopTracking.setCheckable(False)
         self.pushButton_StopTracking.setFlat(False)
 
-        self.horizontalLayout_6.addWidget(self.pushButton_StopTracking)
+        self.horizontalLayout_10.addWidget(self.pushButton_StopTracking)
+
+        self.checkBox_Tracking = QCheckBox(self.tab_home)
+        self.checkBox_Tracking.setObjectName(u"checkBox_Tracking")
+
+        self.horizontalLayout_10.addWidget(self.checkBox_Tracking)
+
+        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_11)
 
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_10)
+
+
+        self.verticalLayout_3.addLayout(self.verticalLayout_6)
 
         self.line = QFrame(self.tab_home)
         self.line.setObjectName(u"line")
@@ -260,18 +465,15 @@ class Ui_Widget(object):
 
         self.pushButton_Connect = QPushButton(self.tab_home)
         self.pushButton_Connect.setObjectName(u"pushButton_Connect")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.pushButton_Connect.sizePolicy().hasHeightForWidth())
-        self.pushButton_Connect.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.pushButton_Connect.sizePolicy().hasHeightForWidth())
+        self.pushButton_Connect.setSizePolicy(sizePolicy)
 
         self.horizontalLayout.addWidget(self.pushButton_Connect)
 
         self.pushButton_Disconnect = QPushButton(self.tab_home)
         self.pushButton_Disconnect.setObjectName(u"pushButton_Disconnect")
-        sizePolicy1.setHeightForWidth(self.pushButton_Disconnect.sizePolicy().hasHeightForWidth())
-        self.pushButton_Disconnect.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.pushButton_Disconnect.sizePolicy().hasHeightForWidth())
+        self.pushButton_Disconnect.setSizePolicy(sizePolicy)
 
         self.horizontalLayout.addWidget(self.pushButton_Disconnect)
 
@@ -291,11 +493,11 @@ class Ui_Widget(object):
 
         self.ConnectedLabel = QLabel(self.tab_home)
         self.ConnectedLabel.setObjectName(u"ConnectedLabel")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.ConnectedLabel.sizePolicy().hasHeightForWidth())
-        self.ConnectedLabel.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.ConnectedLabel.sizePolicy().hasHeightForWidth())
+        self.ConnectedLabel.setSizePolicy(sizePolicy3)
 
         self.horizontalLayout_4.addWidget(self.ConnectedLabel)
 
@@ -458,21 +660,21 @@ class Ui_Widget(object):
         self.horizontalLayout_8.setContentsMargins(-1, 0, -1, -1)
         self.label_18 = QLabel(self.tab_measure)
         self.label_18.setObjectName(u"label_18")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.label_18.sizePolicy().hasHeightForWidth())
-        self.label_18.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.label_18.sizePolicy().hasHeightForWidth())
+        self.label_18.setSizePolicy(sizePolicy4)
 
         self.horizontalLayout_8.addWidget(self.label_18)
 
         self.label_MeasureStatus = QLabel(self.tab_measure)
         self.label_MeasureStatus.setObjectName(u"label_MeasureStatus")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.label_MeasureStatus.sizePolicy().hasHeightForWidth())
-        self.label_MeasureStatus.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.label_MeasureStatus.sizePolicy().hasHeightForWidth())
+        self.label_MeasureStatus.setSizePolicy(sizePolicy5)
 
         self.horizontalLayout_8.addWidget(self.label_MeasureStatus)
 
@@ -492,8 +694,8 @@ class Ui_Widget(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.label_11 = QLabel(self.tab_plot)
         self.label_11.setObjectName(u"label_11")
-        sizePolicy.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
-        self.label_11.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
+        self.label_11.setSizePolicy(sizePolicy1)
         self.label_11.setMinimumSize(QSize(110, 0))
 
         self.horizontalLayout_3.addWidget(self.label_11)
@@ -516,8 +718,8 @@ class Ui_Widget(object):
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.label_16 = QLabel(self.tab_plot)
         self.label_16.setObjectName(u"label_16")
-        sizePolicy.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
-        self.label_16.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
+        self.label_16.setSizePolicy(sizePolicy1)
         self.label_16.setMinimumSize(QSize(110, 0))
 
         self.horizontalLayout_7.addWidget(self.label_16)
@@ -607,11 +809,11 @@ class Ui_Widget(object):
 
         self.textBrowser_log = QTextBrowser(Widget)
         self.textBrowser_log.setObjectName(u"textBrowser_log")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.textBrowser_log.sizePolicy().hasHeightForWidth())
-        self.textBrowser_log.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.textBrowser_log.sizePolicy().hasHeightForWidth())
+        self.textBrowser_log.setSizePolicy(sizePolicy6)
         self.textBrowser_log.setMinimumSize(QSize(0, 200))
 
         self.verticalLayout.addWidget(self.textBrowser_log)
@@ -628,27 +830,39 @@ class Ui_Widget(object):
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Widget", None))
         self.label.setText(QCoreApplication.translate("Widget", u"Radio Antenna Connection Software ", None))
-        self.label_4.setText(QCoreApplication.translate("Widget", u"Ra/Dec", None))
-        self.DecLabel.setText(QCoreApplication.translate("Widget", u"-", None))
-        self.RaLabel.setText(QCoreApplication.translate("Widget", u"-", None))
-        self.label_2.setText(QCoreApplication.translate("Widget", u"Alt/Az", None))
-        self.label_6.setText(QCoreApplication.translate("Widget", u"Gal. Coords", None))
-        self.AltLabel.setText(QCoreApplication.translate("Widget", u"-", None))
-        self.label_GalB.setText(QCoreApplication.translate("Widget", u"-", None))
-        self.label_GalL.setText(QCoreApplication.translate("Widget", u"-", None))
-        self.AzLabel.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.label_CurrentPosition_3.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:16pt;\">Basic commands</span></p></body></html>", None))
+        self.pushButton_openCamera.setText(QCoreApplication.translate("Widget", u"Open Camera", None))
         self.pushButton_goHome.setText(QCoreApplication.translate("Widget", u"Go Home", None))
         self.pushButton_Untangle.setText(QCoreApplication.translate("Widget", u"Untangle", None))
         self.pushButton_Standby.setText(QCoreApplication.translate("Widget", u"Standby", None))
+        self.label_CurrentPosition.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:16pt;\">Current position</span></p></body></html>", None))
+        self.DecLabel.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.AzLabel.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.label_GalB.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.label_2.setText(QCoreApplication.translate("Widget", u"Alt/Az", None))
+        self.RaLabel.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.label_4.setText(QCoreApplication.translate("Widget", u"Ra/Dec", None))
+        self.label_GalL.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.AltLabel.setText(QCoreApplication.translate("Widget", u"-", None))
+        self.label_6.setText(QCoreApplication.translate("Widget", u"Gal. Coords", None))
+        self.label_CurrentPosition_2.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p><span style=\" font-size:16pt;\">Go To</span></p></body></html>", None))
         self.comboBoxTracking.setItemText(0, QCoreApplication.translate("Widget", u"Ra/Dec", None))
         self.comboBoxTracking.setItemText(1, QCoreApplication.translate("Widget", u"Galactic", None))
         self.comboBoxTracking.setItemText(2, QCoreApplication.translate("Widget", u"Az/Alt", None))
 
         self.LabelTrackingFirstCoord.setText(QCoreApplication.translate("Widget", u"Ra", None))
+        self.LabelTrackingFirstCoord_2.setText(QCoreApplication.translate("Widget", u"\u00b0", None))
+        self.LabelTrackingFirstCoord_3.setText(QCoreApplication.translate("Widget", u"h", None))
+        self.LabelTrackingFirstCoord_4.setText(QCoreApplication.translate("Widget", u"m", None))
+        self.LabelTrackingFirstCoord_5.setText(QCoreApplication.translate("Widget", u"s", None))
         self.LabelTrackingSecondCoord.setText(QCoreApplication.translate("Widget", u"Dec", None))
+        self.LabelTrackingSecondCoord_2.setText(QCoreApplication.translate("Widget", u"\u00b0", None))
+        self.LabelTrackingSecondCoord_3.setText(QCoreApplication.translate("Widget", u"\u00b0", None))
+        self.LabelTrackingSecondCoord_4.setText(QCoreApplication.translate("Widget", u"m", None))
+        self.LabelTrackingSecondCoord_5.setText(QCoreApplication.translate("Widget", u"s", None))
         self.pushButton_GoTo.setText(QCoreApplication.translate("Widget", u"Go To", None))
-        self.checkBox_Tracking.setText(QCoreApplication.translate("Widget", u"Tracking", None))
         self.pushButton_StopTracking.setText(QCoreApplication.translate("Widget", u"Stop Tracking", None))
+        self.checkBox_Tracking.setText(QCoreApplication.translate("Widget", u"Tracking", None))
         self.pushButton_Connect.setText(QCoreApplication.translate("Widget", u"Connect", None))
         self.pushButton_Disconnect.setText(QCoreApplication.translate("Widget", u"Disconnect", None))
         self.ConnectedLabel.setText(QCoreApplication.translate("Widget", u"Connected to []", None))
