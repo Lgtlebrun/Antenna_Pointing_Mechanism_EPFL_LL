@@ -159,7 +159,7 @@ class MainClient(QWidget):
         # TODO self.client_socket disconnect?
 
     def sendServ(self, message):
-
+        if DEBUG: print(message)
         if (not self.SRTconnected) and message != "connect":
             self.addToLog("No antenna connected. Aborting...")
             return
@@ -255,7 +255,9 @@ class MainClient(QWidget):
         print("Launch Measurement")
         self.addToLog(f"Started measurement | Center Freq.: {self.ui.doubleSpinBox_centerFreq.value()} MHz, "
                       f"Duration: {self.measureDuration} s, Gain: {self.ui.doubleSpinBox_gain.value()} dB.")
-        self.sendServ()
+        self.sendServ(f"measure {self.ui.doubleSpinBox_centerFreq.value()} {self.ui.doubleSpinBox_Bandwidth.value()}"
+                      f" {self.ui.doubleSpinBox_tsample.value()} {self.ui.doubleSpinBox_duration.value()}"
+                      f" {self.ui.doubleSpinBox_gain.value()} {self.ui.spinBox_channels.value()}")
 
     def MeasurementDone(self):  # link to end of measurement thread!!
         self.measuring = 0

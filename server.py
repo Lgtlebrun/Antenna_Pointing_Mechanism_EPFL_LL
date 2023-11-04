@@ -74,7 +74,7 @@ class MotionThread(QThread):
         self.a = a
         self.b = b
 
-    def run(self):  # TODO : Standby, Untangle, measurement
+    def run(self):
 
         feedback = ''
         print(self.cmd)
@@ -241,6 +241,8 @@ class ServerGUI(QMainWindow):
         self.posThread = PositionThread()
         self.posThread.send2socket.connect(self.sendClient)
         self.posThread.start()  # Start in pause mode
+
+        self.measuring = 0
 
     def get_ipv4_address(self):
         """Method that gets the ipv4 address of host to initialize the server """
@@ -423,6 +425,15 @@ class ServerGUI(QMainWindow):
 
             else:
                 self.sendWarning("MOVING")
+        elif cmd == 'measure':
+            centerFreq, bandwidth, sampleTime, duration, gain, channels = (float(args[1]), float(args[2]), float(args[3]),
+                                                                           float(args[4]), float(args[5]),float(args[6]))
+            if(self.measuring == 0):
+                self.measuring = 1
+                #TODO connect actual measurement, remember to set self.measuring to 0. Nec. parameters are above.
+            else:
+                self.sendError("Already measuring!")
+
 
     def sendEndMotion(self, cmd, feedback):
         """Sends message to client when motion is ended
