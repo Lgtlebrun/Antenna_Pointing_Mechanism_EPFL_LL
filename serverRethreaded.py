@@ -61,7 +61,7 @@ class StdoutRedirector(io.StringIO):
         self.emettor.printMsg.emit(message, False)  # Set verbose to False
 
 
-class MotionThread(QThread):
+class SRTThread(QThread):
 
     """Thread that parallelizes the execution of long-duration motion tasks"""
 
@@ -234,7 +234,7 @@ class ServerGUI(QMainWindow):
 
         self.server.newConnection.connect(self.handleConnection)
 
-        self.motionThread = MotionThread("wait")
+        self.motionThread = SRTThread("wait")
 
         # When in motion, stop asking for position. Tracking not affected
 
@@ -294,7 +294,7 @@ class ServerGUI(QMainWindow):
             self.client_socket = None
             # Restore sys.stdout to its original state
             self.restore_stdout()
-            self.motionThread = MotionThread("disconnect")
+            self.motionThread = SRTThread("disconnect")
             self.motionThread.start()
 
     def redirect_stdout(self):
@@ -410,10 +410,10 @@ class ServerGUI(QMainWindow):
 
                 if len(args) > 1:   # Parses arguments
                     a, b = float(args[1]), float(args[2])
-                    self.motionThread = MotionThread(cmd, a, b)
+                    self.motionThread = SRTThread(cmd, a, b)
 
                 elif len(args) == 1:
-                    self.motionThread = MotionThread(cmd)
+                    self.motionThread = SRTThread(cmd)
 
                 else:
                     raise ValueError(
@@ -426,11 +426,6 @@ class ServerGUI(QMainWindow):
             else:
                 self.sendWarning("MOVING")
         elif cmd == 'measure':
-            if not self.motionThread.isRunning():
-                # Pauses thread spamming position
-                self.pausePosThread()
-                while self.posThread.pending:   # Waits for posThread return
-                    continue
             centerFreq, bandwidth, sampleTime, duration, gain, channels = (float(args[1]), float(args[2]), float(args[3]),
                                                                            float(args[4]), float(args[5]),float(args[6]))
             if(self.measuring == 0):
@@ -439,9 +434,6 @@ class ServerGUI(QMainWindow):
             else:
                 self.sendError("Already measuring!")
 
-            self.motionThread.endMotion.connect(self.sendEndMotion)
-
-            self.motionThread.start()
 
     def sendEndMotion(self, cmd, feedback):
         """Sends message to client when motion is ended
