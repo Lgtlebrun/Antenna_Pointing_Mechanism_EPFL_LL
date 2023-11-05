@@ -29,7 +29,6 @@ SRT = Srt("/dev/ttyUSB0", 115200, 1)
 
 
 class sigEmettor(QObject):
-
     """QObject that handles sending a signal from a non-Q thread.
     Used by StdoutRedirector to pass the Server a print statement
     to send to the client"""
@@ -45,13 +44,11 @@ class StdoutRedirector(io.StringIO):
     console and to the client via messages with PRINT status"""
 
     def __init__(self, target, parent=None):
-
         super().__init__()
         self.target = target
         self.emettor = sigEmettor()
 
     def write(self, message):
-
         self.target.write(message)
         self.target.flush()
         if message == '\n':
@@ -62,12 +59,11 @@ class StdoutRedirector(io.StringIO):
 
 
 class MotionThread(QThread):
-
     """Thread that parallelizes the execution of long-duration motion tasks"""
 
     endMotion = Signal(str, str)
 
-    def __init__(self,  cmd: str, a=None, b=None, parent=None):
+    def __init__(self, cmd: str, a=None, b=None, parent=None):
         super().__init__(parent)
 
         self.cmd = cmd
@@ -131,7 +127,6 @@ class MotionThread(QThread):
 
 
 class PositionThread(QThread):
-
     """Thread that updates continuously the current coordinates of the antenna """
 
     # Signal emitted to pass the Serevr the msg to send to the client
@@ -142,13 +137,13 @@ class PositionThread(QThread):
         the global variable SRT which handles waiting for tracker/ping"""
 
         super().__init__(parent)
-        self.on = False         # May pause the thread but does not kill it
-        self.stop = False       # kills the thread
-        self.pending = False    # flag on while waiting for answer from ser
+        self.on = False  # May pause the thread but does not kill it
+        self.stop = False  # kills the thread
+        self.pending = False  # flag on while waiting for answer from ser
 
         self.daemon = True
 
-    def stop(self):             # Allows to kill the thread
+    def stop(self):  # Allows to kill the thread
         self.stop = True
 
     def pause(self):
@@ -161,9 +156,9 @@ class PositionThread(QThread):
         while not self.stop:
 
             if self.on:
-                self.pending = True         # Indicates waiting for an answer
+                self.pending = True  # Indicates waiting for an answer
                 self.sendPos()
-                self.pending = False        # Answer received
+                self.pending = False  # Answer received
 
                 # delay next
                 timeNow = time.time()
@@ -186,7 +181,7 @@ class PositionThread(QThread):
 
     def sendError(self, msg):
 
-        msg = "ERROR|"+msg
+        msg = "ERROR|" + msg
         self.sendClient(msg)
 
     def sendPos(self):
@@ -253,7 +248,7 @@ class ServerGUI(QMainWindow):
             for interface in interfaces:
                 # Check if the interface is not loopback and is running
                 if not interface.flags() & QNetworkInterface.InterfaceFlag.IsLoopBack and \
-                   interface.flags() & QNetworkInterface.InterfaceFlag.IsRunning:
+                        interface.flags() & QNetworkInterface.InterfaceFlag.IsRunning:
                     addresses = interface.addressEntries()
                     for address in addresses:
                         if address.ip().protocol() == QAbstractSocket.NetworkLayerProtocol.IPv4Protocol:
@@ -352,7 +347,7 @@ class ServerGUI(QMainWindow):
 
     def sendError(self, msg):
 
-        msg = "ERROR|"+msg
+        msg = "ERROR|" + msg
         self.sendClient(msg)
 
     def receiveMessage(self, verbose=True):
@@ -378,7 +373,6 @@ class ServerGUI(QMainWindow):
             if len(messages) > 1:
                 print(f"Received concatenated messages : {messages}")
                 for message in messages:
-
                     print(f"processing msg {message}")
 
                     # Re-add the start character
@@ -393,22 +387,24 @@ class ServerGUI(QMainWindow):
         else:
             self.addToLog(
                 f"Warning : incorrectly formated message received : {msg}")
-            return      # Ignores incorrectly formatted messages
+            return  # Ignores incorrectly formatted messages
 
         self.addToLog("Received: " + msg)
         args = msg.split(" ")
         cmd = args[0]
 
         # Processing of command
-        if cmd in ("connect", "pointRA", "pointGal ", "pointAzAlt", "trackRA", "trackGal", "goHome", "untangle", "standby", "disconnect"):
+        if cmd in (
+        "connect", "pointRA", "pointGal ", "pointAzAlt", "trackRA", "trackGal", "goHome", "untangle", "standby",
+        "disconnect"):
 
             if not self.motionThread.isRunning():
                 # Pauses thread spamming position
                 self.pausePosThread()
-                while self.posThread.pending:   # Waits for posThread return
+                while self.posThread.pending:  # Waits for posThread return
                     continue
 
-                if len(args) > 1:   # Parses arguments
+                if len(args) > 1:  # Parses arguments
                     a, b = float(args[1]), float(args[2])
                     self.motionThread = MotionThread(cmd, a, b)
 
@@ -429,13 +425,15 @@ class ServerGUI(QMainWindow):
             if not self.motionThread.isRunning():
                 # Pauses thread spamming position
                 self.pausePosThread()
-                while self.posThread.pending:   # Waits for posThread return
+                while self.posThread.pending:  # Waits for posThread return
                     continue
-            centerFreq, bandwidth, sampleTime, duration, gain, channels = (float(args[1]), float(args[2]), float(args[3]),
-                                                                           float(args[4]), float(args[5]),float(args[6]))
-            if(self.measuring == 0):
+            centerFreq, bandwidth, sampleTime, duration, gain, channels = \
+                (float(args[1]), float(args[2]), float(args[3]),
+                 float(args[4]), float(args[5]), float(args[6]))
+
+            if self.measuring == 0:
                 self.measuring = 1
-                #TODO connect actual measurement, remember to set self.measuring to 0. Nec. parameters are above.
+                # TODO connect actual measurement, remember to set self.measuring to 0. Nec. parameters are above.
             else:
                 self.sendError("Already measuring!")
 
