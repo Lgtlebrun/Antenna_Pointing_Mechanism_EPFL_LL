@@ -1,10 +1,14 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import math
+import cv2
+import numpy as np
 from os.path import expanduser
-from time import time, localtime, strftime
+import time
+from time import localtime, strftime
 
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
+from PySide6.QtGui import QImage, QPixmap
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QVBoxLayout, QLabel
 from PySide6.QtCore import Slot, QFileInfo, QTimer, Signal, QThread
 from PySide6.QtNetwork import QTcpSocket
 # Important:
@@ -15,6 +19,7 @@ from GUI import ui_form_client
 from GUI import ui_form_launcher
 
 DEBUG = 1
+VIDEOSOURCE = ""
 
 def HMStoDeg(h,m,s):
     return h*360/24+m*6/24+s/240
@@ -147,6 +152,11 @@ class MainClient(QWidget):
         self.ui.doubleSpinBox_TrackSecondCoord_m.valueChanged.connect(self.TrackSecondCoordHMSChanged)
         self.ui.doubleSpinBox_TrackSecondCoord_s.valueChanged.connect(self.TrackSecondCoordHMSChanged)
         self.ui.tabWidget.setCurrentIndex(0)
+
+        self.ui.pushButton_openCamera.clicked.connect(self.openCameraClicked)
+        self.cameraThread = QCameraThread()
+        self.cameraThread.closeSignalCameraThread.connect(self.cameraThreadFinished)
+
 
         self.show()
 
@@ -287,6 +297,7 @@ class MainClient(QWidget):
             self.ui.doubleSpinBox_TrackSecondCoord_Deg.setEnabled(0)
             self.ui.doubleSpinBox_TrackSecondCoord_m.setEnabled(0)
             self.ui.doubleSpinBox_TrackSecondCoord_s.setEnabled(0)
+            self.ui.comboBoxTracking.setEnabled(0)
             self.ui.checkBox_Tracking.setEnabled(0)
 
             # valeurs
@@ -333,7 +344,8 @@ class MainClient(QWidget):
         self.ui.doubleSpinBox_TrackSecondCoord_Deg.setEnabled(1)
         self.ui.doubleSpinBox_TrackSecondCoord_m.setEnabled(1)
         self.ui.doubleSpinBox_TrackSecondCoord_s.setEnabled(1)
-        self.ui.checkBox_Tracking.setEnabled(0)
+        self.ui.comboBoxTracking.setEnabled(1)
+        self.ui.checkBox_Tracking.setEnabled(1)
 
         self.ui.pushButton_GoTo.setEnabled(1)
         self.ui.checkBox_Tracking.setEnabled(1)
@@ -408,9 +420,11 @@ class MainClient(QWidget):
         if index == 0:
             self.ui.LabelTrackingFirstCoord.setText("Ra")
             self.ui.LabelTrackingSecondCoord.setText("Dec")
+            self.ui.checkBox_Tracking.setEnabled(1)
         if index == 1:
             self.ui.LabelTrackingFirstCoord.setText("l")
             self.ui.LabelTrackingSecondCoord.setText("b")
+            self.ui.checkBox_Tracking.setEnabled(1)
         if index == 2:
             self.ui.LabelTrackingFirstCoord.setText("Az")
             self.ui.LabelTrackingSecondCoord.setText("Alt")
@@ -483,6 +497,102 @@ class MainClient(QWidget):
         self.ui.AltLabel.setText(f"{Alt:.2f}")
         self.ui.AzLabel.setText(f"{Az:.2f}")
 
+    def openCameraClicked(self):
+        print(self.cameraThread.on)
+        if not self.cameraThread.on:
+            self.cameraThread = QCameraThread()
+            self.cameraThread.closeSignalCameraThread.connect(self.cameraThreadFinished)
+            self.cameraThread.turnOn()
+            self.cameraThread.start()
+            self.ui.pushButton_openCamera.setText("Close Camera")
+        else:
+            self.cameraThread.turnOff()
+            while self.cameraThread.isRunning():
+                pass
+            #self.cameraThread.exit()
+            self.cameraThread = QCameraThread()
+            self.ui.pushButton_openCamera.setText("Open Camera")
+
+    def cameraThreadFinished(self):
+        print("triggered")
+        self.ui.pushButton_openCamera.setText("Open Camera")
+        self.cameraThread = QCameraThread()
+
+class QCameraThread(QThread):
+
+    closeSignalCameraThread = Signal()
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.on = False
+
+        self.display_image_widget = DisplayImageWidget()
+        self.display_image_widget.closeSignal.connect(self.CustomClose)
+
+    def turnOff(self):
+        self.on = False
+        if VIDEOSOURCE == '':
+            return
+        cv2.destroyWindow("Camera")
+
+    def turnOn(self):
+        self.on = True
+        self.display_image_widget.show()
+
+    def CustomClose(self):
+        print("customclosed")
+        self.closeSignalCameraThread.emit()
+        self.exit()
+
+    def run(self):
+        if VIDEOSOURCE == '':
+            return
+
+        self.cap = cv2.VideoCapture(VIDEOSOURCE)
+        self.FRAME_WIDTH = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        self.FRAME_HEIGHT = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        print('Frame Size: ', self.FRAME_WIDTH, 'x', self.FRAME_HEIGHT)
+
+        self.ret = False
+        self.frame = None
+        if self.cap.isOpened():
+            self.ret, self.frame = self.cap.read()
+
+        while self.ret and self.on:
+            #print("loading")
+            self.ret, self.frame = self.cap.read()
+            if self.frame is not None: self.display_image_widget.show_image(self.frame)
+            time.sleep(0.05)
+            #cv2.imshow('Camera', self.frame)
+
+
+class DisplayImageWidget(QWidget):
+
+    closeSignal = Signal()
+    def __init__(self, parent=None):
+        super(DisplayImageWidget, self).__init__(parent)
+
+        self.image_frame = QLabel()
+
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.image_frame)
+        self.setLayout(self.layout)
+
+    def closeEvent(self, event):
+        print("closed")
+        self.closeSignal.emit()
+
+    @Slot()
+    def show_image(self, cap):
+        scale_percent = 60  # percent of original size
+        width = int(cap.shape[1] * scale_percent / 100)
+        height = int(cap.shape[0] * scale_percent / 100)
+        dim = (width, height)
+
+        # resize image
+        resized = cv2.resize(cap, dim, interpolation=cv2.INTER_AREA)
+
+        self.image_frame.setPixmap(QPixmap.fromImage(QImage(resized.data, resized.shape[1],
+                                                            resized.shape[0], QImage.Format_RGB888).rgbSwapped()))
 
 if __name__ == "__main__":
     sys.argv[0] = 'Astro Antenna'
